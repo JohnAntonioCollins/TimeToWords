@@ -9,7 +9,7 @@ public class main
 {
     public static void main(String[] args)
     {
-        String format12x24;
+        String format12or24;
         String userInput = "";
         Scanner scan = new Scanner(System.in);
         InputXoutput iO = new InputXoutput();
@@ -18,9 +18,9 @@ public class main
         {
             System.out.println(iO.getAskUserFor12hrX24hr());
 
-            format12x24 = scan.nextLine();
+            format12or24 = scan.nextLine();
 
-            iO.setIs24hrFormat(format12x24);
+            iO.setIs24hrFormat(format12or24);
 
             System.out.println(iO.getAskUserForTime());
 
