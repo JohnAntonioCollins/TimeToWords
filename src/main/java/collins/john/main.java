@@ -9,22 +9,29 @@ public class main
 {
     public static void main(String[] args)
     {
-        String timeInNumbers = "";
+        String userInput = "";
         Scanner scan = new Scanner(System.in);
-        while (!timeInNumbers.equals("exit"))
+        while (!userInput.equals("exit"))
         {
-            System.out.println("Enter a time in hh:mm format and it will be converted into words. (type 'exit' to quit the program)");
-            timeInNumbers = scan.nextLine();
-            SplitIntoHoursAndMinutes splitter = new SplitIntoHoursAndMinutes(timeInNumbers);
-            String hoursInNumbers = splitter.getHours();
-            String minutesInNmbuers = splitter.getMinutes();
-            HoursToString hoursWord = new HoursToString();
-            MinutesToString minutesWord = new MinutesToString();
-            String hoursInWords = hoursWord.hoursToString(hoursInNumbers);
-            String minutesInWords = minutesWord.minutesToString(minutesInNmbuers);
-            JoinIntoTimeWords joiner = new JoinIntoTimeWords();
-            String timeInWords = joiner.joinTimeWords(hoursInWords, minutesInWords);
-            System.out.println(timeInWords);
+            System.out.println("Enter the time in ' hh:mm AM ' format to see it converted to words.");
+            userInput = scan.nextLine();
+            InputXoutput iO = new InputXoutput();
+            iO.setUserInput(userInput);
+            iO.validator();
+            if (iO.isInputValid())
+            {
+                SplitterXjoiner sXj = new SplitterXjoiner();
+                sXj.setTimeNumber(iO.getValidInput());
+                sXj.merediemSetter();
+                sXj.hourXminuteSplitter();
+                sXj.setTimeWord();
+                System.out.println(sXj.getTimeWord());
+            }
         }
     }
 }
+
+
+
+
+
