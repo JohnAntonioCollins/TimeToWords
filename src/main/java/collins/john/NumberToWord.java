@@ -7,13 +7,13 @@ public class NumberToWord
 {
 
 
-    public String convertNumberToWord(String timeNumber)
+    public String convertNumberToWord(String timeNumber, boolean is24hrFormat)
     {
         String timeWord;
         switch (timeNumber)
         {
             case "00":
-                timeWord = "o'clock";
+                timeWord = is24hrFormat ? "hundred" : "o'clock";
                 break;
             case "01":
                 timeWord = "oh-one";

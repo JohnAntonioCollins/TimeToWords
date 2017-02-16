@@ -9,23 +9,29 @@ public class main
 {
     public static void main(String[] args)
     {
+        String format12x24;
         String userInput = "";
         Scanner scan = new Scanner(System.in);
+        InputXoutput iO = new InputXoutput();
+
         while (!userInput.equals("exit"))
         {
-            System.out.println("Enter the time in ' hh:mm AM ' format to see it converted to words.");
+            System.out.println(iO.getAskUserFor12hrX24hr());
+
+            format12x24 = scan.nextLine();
+
+            iO.setIs24hrFormat(format12x24);
+
+            System.out.println(iO.getAskUserForTime());
+
             userInput = scan.nextLine();
-            InputXoutput iO = new InputXoutput();
             iO.setUserInput(userInput);
             iO.validator();
             if (iO.isInputValid())
             {
-                SplitterXjoiner sXj = new SplitterXjoiner();
-                sXj.setTimeNumber(iO.getValidInput());
-                sXj.merediemSetter();
-                sXj.hourXminuteSplitter();
-                sXj.setTimeWord();
-                System.out.println(sXj.getTimeWord());
+                SplitterXjoiner sXj = new SplitterXjoiner(iO.getValidInput(), iO.isIs24hrFormat());
+
+                System.out.println("\n"+sXj.getTimeWord()+"\n");
             }
         }
     }

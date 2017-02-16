@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
  */
 public class SplitterXjoiner
 {
+    private boolean is24hrFormat;
     private String meridiem = "";
     private String timeNumber;
     private String hourNumber;
@@ -17,7 +18,14 @@ public class SplitterXjoiner
     private String minuteWord;
     private String timeWord;
 
-
+    public SplitterXjoiner(String validInput, boolean is24hrFormat)
+    {
+        this.is24hrFormat = is24hrFormat;
+        setTimeNumber(validInput);
+        if (!is24hrFormat) merediemSetter();
+        hourXminuteSplitter();
+        setTimeWord();
+    }
 
     public void merediemSetter()
     {
@@ -48,11 +56,13 @@ public class SplitterXjoiner
         this.hourNumber = hoursANDmins.get(0);
         this.minuteNumber = hoursANDmins.get(1);
     }
-    public void setTimeWord(){
+
+    public void setTimeWord()
+    {
         NumberToWord converter = new NumberToWord();
-        hourWord = converter.convertNumberToWord(this.hourNumber);
-        minuteWord = converter.convertNumberToWord(this.minuteNumber);
-        timeWord = hourWord+" "+minuteWord+" "+meridiem;
+        hourWord = converter.convertNumberToWord(this.hourNumber, false);
+        minuteWord = converter.convertNumberToWord(this.minuteNumber, is24hrFormat);
+        timeWord = hourWord + " " + minuteWord + " " + meridiem;
 
     }
 

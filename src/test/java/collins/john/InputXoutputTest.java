@@ -27,4 +27,18 @@ public class InputXoutputTest
         boolean expected = true;
         assertEquals("should be true, 12:39 is a regex match", expected, actual);
     }
+    @Test
+    public void setIs24hrFormatTest(){
+        testIxO.setIs24hrFormat("M");
+        boolean actual = testIxO.isIs24hrFormat();
+        boolean expected = true;
+        assertEquals("should be true", expected, actual);
+    }
+    @Test
+    public void setIs24hrFormatTestFALSE(){
+        testIxO.setIs24hrFormat("S");
+        boolean actual = testIxO.isIs24hrFormat();
+        boolean expected = false;
+        assertEquals("should be false", expected, actual);
+    }
 }

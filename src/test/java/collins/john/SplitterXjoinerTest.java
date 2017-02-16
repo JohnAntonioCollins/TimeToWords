@@ -15,8 +15,7 @@ public class SplitterXjoinerTest
     @Before
     public void setUp()
     {
-        sxjTest = new SplitterXjoiner();
-        sxjTest.setTimeNumber("12:15 pm");
+        sxjTest = new SplitterXjoiner("12:15", false);
     }
 
     @Test
@@ -48,4 +47,26 @@ public class SplitterXjoinerTest
                 String expected = "twelve fifteen PM";
         assertEquals("should say 'twelve fifteen PM'", expected, actual);
     }
+    @Test
+    public void SplitterXJoinerConstructorTest24HR(){
+        SplitterXjoiner sxjConstructor = new SplitterXjoiner("12:12", false);
+        String actual = sxjConstructor.getTimeWord();
+        String expected = "twelve twelve ";
+        assertEquals("should say 'twelve-twelve ' <= note the space", expected, actual);
+    }
+    @Test
+    public void SplitterXJoinerConstructorTest24HR_OH_SIX(){
+        SplitterXjoiner sxjConstructor = new SplitterXjoiner("06:12", true);
+        String actual = sxjConstructor.getTimeWord();
+        String expected = "oh-six twelve ";
+        assertEquals("should say 'oh-six twelve ' <= note the space", expected, actual);
+    }
+    @Test
+    public void SplitterXJoinerConstructorTest24HR_OH_SIX_HUNDRED(){
+        SplitterXjoiner sxjConstructor = new SplitterXjoiner("06:00", true);
+        String actual = sxjConstructor.getTimeWord();
+        String expected = "oh-six hundred ";
+        assertEquals("should say 'oh-six hundred ' <= note the space", expected, actual);
+    }
+
 }
