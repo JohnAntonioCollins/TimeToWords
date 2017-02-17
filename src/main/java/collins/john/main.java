@@ -32,6 +32,7 @@ public class main
                 SplitterXjoiner sXj = new SplitterXjoiner(iO.getValidInput(), iO.isIs24hrFormat());
 
                 System.out.println("\n"+sXj.getTimeWord()+"\n");
+
             }
         }
     }

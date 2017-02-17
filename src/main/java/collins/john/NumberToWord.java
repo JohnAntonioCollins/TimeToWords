@@ -41,6 +41,7 @@ public class NumberToWord
                 break;
             case "09":
                 timeWord = "oh-nine";
+                break;
             case "1":
                 timeWord = "one";
                 break;
